@@ -11,7 +11,7 @@ public abstract class Behavior {
 
 	public abstract boolean canAct();
 
-	/** Performs a canAct() should be check before any calls to act are made */
+	/** Discrete unit of work. canAct() should be checked before any calls to act are made */
 	public abstract void act();
 
 	protected void sleep(Times type) {
