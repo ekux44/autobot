@@ -1,3 +1,4 @@
+package autobot.behavior;
 
 public class AlchNotedInventory extends Behavior {
 

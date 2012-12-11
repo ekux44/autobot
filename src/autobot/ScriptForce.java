@@ -1,3 +1,4 @@
+package autobot;
 import org.powerbot.game.api.Manifest;
 
 import javax.swing.*;

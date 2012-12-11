@@ -1,3 +1,5 @@
+package autobot.behavior;
+
 import org.powerbot.game.api.methods.input.Keyboard;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.methods.widget.Bank;
@@ -14,7 +16,7 @@ public class Superheater extends Behavior {
 	@Override
 	/** this assumes near bank, fire staff equipped, and inventory tab open **/
 	public void prepare() {
-		//TODO reduce assumptions
+		// TODO reduce assumptions
 		try {
 			Bank.depositInventory();
 			canAccomplish = true;
@@ -26,7 +28,7 @@ public class Superheater extends Behavior {
 
 	@Override
 	public boolean canAct() {
-		if (errorCount > 5) //arbitrary number of acceptable errors
+		if (errorCount > 5) // arbitrary number of acceptable errors
 			canAccomplish = false;
 		// TODO add more checking
 		return canAccomplish;
