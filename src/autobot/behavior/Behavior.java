@@ -29,6 +29,8 @@ public abstract class Behavior {
 			return Random.nextGaussian(875, 1120, 1000, 80);
 		case SUPERHEAT:
 			return Random.nextGaussian(1200, 1400, 1250, 30);
+		case HIGHALCH:
+			return Random.nextGaussian(1600, 1800, 1650, 30);
 		case BANK:
 			return Random.nextGaussian(3200, 3400, 3250, 30);
 		case KEYPRESS:
@@ -38,6 +40,6 @@ public abstract class Behavior {
 	}
 
 	public enum Times {
-		NORMAL, SUPERHEAT, BANK, KEYPRESS
+		NORMAL, SUPERHEAT, BANK, KEYPRESS, HIGHALCH
 	}
 }

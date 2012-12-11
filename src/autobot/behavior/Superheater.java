@@ -14,7 +14,8 @@ public class Superheater extends Behavior {
 			natureRunes = 561;
 
 	@Override
-	/** this assumes near bank, fire staff equipped, and inventory tab open **/
+	/** this assumes near bank, fire staff equipped, inventory tab open, 
+	 * and superheat bound to 1 on the open action bar **/
 	public void prepare() {
 		// TODO reduce assumptions
 		try {

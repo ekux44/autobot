@@ -8,7 +8,7 @@ import autobot.behavior.*;
 @Manifest(authors = { "ekux" }, name = "KuxBot")
 public class KuxBot extends ActiveScript {
 
-	Behavior b = new Superheater();
+	Behavior b = new AlchNotedInventory();//new Superheater();
 
 	@Override
 	public void onStart() {
