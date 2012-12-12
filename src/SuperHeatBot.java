@@ -1,19 +1,16 @@
 
-
 import org.powerbot.core.script.ActiveScript;
 import org.powerbot.game.api.Manifest;
 
 import autobot.behavior.*;
 
-/*** my personal experimental bot **/
-@Manifest(authors = { "ekux" }, name = "KuxBot")
-public class KuxBot extends ActiveScript {
+@Manifest(authors = { "ekux" }, name = "SuperHeatBot")
+public class SuperHeatBot extends ActiveScript {
 
 	Behavior b = new Superheater();
 
 	@Override
 	public void onStart() {
-		System.out.println("Starting up Kuxscript");
 		b.prepare();
 	}
 
@@ -28,6 +25,5 @@ public class KuxBot extends ActiveScript {
 
 	@Override
 	public void onStop() {
-		System.out.println("Stopping Kuxscript");
 	}
 }
