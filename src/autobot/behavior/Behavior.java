@@ -1,5 +1,4 @@
 package autobot.behavior;
-
 import org.powerbot.core.script.job.Task;
 import org.powerbot.game.api.util.Random;
 
@@ -37,11 +36,13 @@ public abstract class Behavior {
 			return Random.nextGaussian(3200, 3400, 3250, 30);
 		case KEYPRESS:
 			return Random.nextGaussian(80, 130, 100, 15);
+		case BONEBURRY:
+			return Random.nextGaussian(1200, 1400, 1250, 30);//guess
 		}
 		return 0;
 	}
 
 	public enum Times {
-		SHORT, NORMAL, SUPERHEAT, BANK, KEYPRESS, HIGHALCH
+		SHORT, NORMAL, SUPERHEAT, BANK, KEYPRESS, HIGHALCH, BONEBURRY
 	}
 }
