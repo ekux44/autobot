@@ -25,10 +25,12 @@ public abstract class Behavior {
 	protected int getTime(Times type) {
 		// TODO shorten times
 		switch (type) {
+		case SHORT:
+			return Random.nextInt(150, 250);
 		case NORMAL:
 			return Random.nextGaussian(875, 1120, 1000, 80);
 		case SUPERHEAT:
-			return Random.nextGaussian(1200, 1400, 1250, 30);
+			return Random.nextInt(1200, 1500);
 		case HIGHALCH:
 			return Random.nextGaussian(3100, 3200, 3150, 30);
 		case BANK:
@@ -40,6 +42,6 @@ public abstract class Behavior {
 	}
 
 	public enum Times {
-		NORMAL, SUPERHEAT, BANK, KEYPRESS, HIGHALCH
+		SHORT, NORMAL, SUPERHEAT, BANK, KEYPRESS, HIGHALCH
 	}
 }

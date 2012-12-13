@@ -30,7 +30,10 @@ public class Superheater extends Behavior {
 	@Override
 	public boolean canAct() {
 		if (errorCount > 5) // arbitrary number of acceptable errors
+		{
+			System.out.println("Shutting down");
 			canAccomplish = false;
+		}
 		// TODO add more checking
 		return canAccomplish;
 	}
@@ -43,6 +46,7 @@ public class Superheater extends Behavior {
 				smelt();
 		} catch (Exception e) {
 			errorCount++;
+			System.out.println("Caught an error");
 		}
 	}
 
@@ -55,15 +59,15 @@ public class Superheater extends Behavior {
 
 	private void bank() throws Exception {
 		Bank.open();
-		sleep(Times.NORMAL);
+		sleep(Times.SHORT);
 		Bank.depositInventory();
-		sleep(Times.NORMAL);
+		sleep(Times.SHORT);
 		Bank.withdraw(natureRunes, 5);
-		sleep(Times.NORMAL);
+		sleep(Times.SHORT);
 		Bank.withdraw(coalOre, 20);
-		sleep(Times.NORMAL);
+		sleep(Times.SHORT);
 		Bank.withdraw(mithrilOre, 5);
-		sleep(Times.NORMAL);
+		sleep(Times.SHORT);
 		Bank.close();
 		sleep(Times.BANK);
 
