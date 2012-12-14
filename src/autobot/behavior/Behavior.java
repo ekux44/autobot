@@ -24,6 +24,8 @@ public abstract class Behavior {
 	protected int getTime(Times type) {
 		// TODO shorten times
 		switch (type) {
+		case VERYSHORT:
+			return Random.nextInt(150, 250);
 		case SHORT:
 			return Random.nextInt(150, 250);
 		case NORMAL:
@@ -43,6 +45,6 @@ public abstract class Behavior {
 	}
 
 	public enum Times {
-		SHORT, NORMAL, SUPERHEAT, BANK, KEYPRESS, HIGHALCH, BONEBURRY
+		SHORT, NORMAL, SUPERHEAT, BANK, KEYPRESS, HIGHALCH, BONEBURRY, VERYSHORT
 	}
 }

@@ -3,6 +3,7 @@ package autobot.behavior;
 import org.powerbot.game.api.methods.input.Keyboard;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.methods.widget.Bank;
+import org.powerbot.game.api.util.Time;
 
 /** Sample Behavior that heats mith@author Eric Kuxhausen **/
 public class Superheater extends Behavior {
@@ -43,22 +44,32 @@ public class Superheater extends Behavior {
 		try {
 			bank();
 			for (int i = 0; i < 5; i++)
+			{
+				System.out.println("making bar num: "+i);
+				sleep(Times.VERYSHORT);
 				smelt();
+			}
 		} catch (Exception e) {
 			errorCount++;
-			System.out.println("Caught an error");
+			System.out.println("Caught an error: "+e);
 		}
 	}
 
 	private void smelt() throws Exception {
 		Keyboard.sendKey((char) '1', getTime(Times.KEYPRESS));
 		sleep(Times.KEYPRESS);
+		sleep(Times.VERYSHORT);
 		Inventory.getItemAt(25).getWidgetChild().click(true);
 		sleep(Times.SUPERHEAT);
 	}
 
 	private void bank() throws Exception {
-		Bank.open();
+		if(Bank.open())
+			System.out.println("opened bank");
+		else {
+			sleep(Times.SHORT);
+			Bank.open();
+		}
 		sleep(Times.SHORT);
 		Bank.depositInventory();
 		sleep(Times.SHORT);

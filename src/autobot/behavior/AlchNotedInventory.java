@@ -6,7 +6,7 @@ import org.powerbot.game.api.wrappers.node.Item;
 
 import autobot.behavior.Behavior.Times;
 
-/** currently high alcs everything in inventory except natures, indifferent of noted **/
+/** currently high alchs everything in inventory except natures, indifferent of noted **/
 public class AlchNotedInventory extends Behavior {
 
 	private boolean canAccomplish;
@@ -36,6 +36,7 @@ public class AlchNotedInventory extends Behavior {
 		try {
 			alchEverythingButNatureOnce();
 		} catch (Exception e) {
+			System.out.println("Caught error: "+e);
 			errorCount++;
 		}
 	}
