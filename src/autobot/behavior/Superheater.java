@@ -29,14 +29,24 @@ public class Superheater extends Behavior {
 			Bank.depositEquipment();
 			sleep(Times.SHORT);
 			if(!Bank.withdraw(staffOfFire, 1)){
-				System.out.println("withdraw failed");
-				canAccomplish = false; 
-								
+				System.out.println("withdraw failed once"); 
+				
 				sleep(Times.SHORT);
 				Bank.close();
 				sleep(Times.BANK);
 				
-				return;
+				Bank.open();
+				sleep(Times.SHORT);
+				if(!Bank.withdraw(staffOfFire, 1)){
+					System.out.println("withdraw failed both times");
+					canAccomplish = false; 
+					
+					sleep(Times.SHORT);
+					Bank.close();
+					sleep(Times.BANK);
+					
+					return;
+				}
 			}
 			sleep(Times.SHORT);
 			Bank.close();
