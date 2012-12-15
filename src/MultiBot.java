@@ -1,63 +1,56 @@
-
 import org.powerbot.core.script.ActiveScript;
 import org.powerbot.game.api.Manifest;
 import org.powerbot.game.api.util.Timer;
 
 import autobot.behavior.*;
 
+/**
+ * Randomly runs behaviors listed below. Will switch occasionally switch
+ * behaviors and will stop trying a behavior if it is unsuccessful
+ **/
 @Manifest(authors = { "ekux" }, name = "MultiBot")
 public class MultiBot extends ActiveScript {
 
-	//Behavior[] b = {new Fletcher(), new Superheater()};
-	int[] bActs = {100/14, 150/5};
+	Behavior b;
+	Class<?>[] behaviors = { Superheater.class, Fletcher.class };
+	boolean[] canStillAct = { true, true };
 	int bCurrent = 0;
-	
-	
+
 	int maxTimeInMinutes = 240;
-	Timer t = new Timer(60L*1000L*maxTimeInMinutes);
-	
-	
-	
-	@Override
-	public void onStart() {
-	//	b[bCurrent].prepare();
-		
+	Timer t = new Timer(60L * 1000L * maxTimeInMinutes);
+
+	public boolean somethingCanStillAct() {
+		boolean result = false;
+		for (boolean b : canStillAct)
+			result |= b;
+		return result;
 	}
 
 	@Override
 	public int loop() {
-	/*	if (t.isRunning()&&bActs[bCurrent]>0 && b[bCurrent].canAct()){
-			b[bCurrent].act();
-			bActs[bCurrent]--;
-			
-			//Randomly switch behaviors
-			if(Math.random()<.5){
-				bCurrent = (int) (Math.random()*b.length);
-				b[bCurrent].prepare();
-				
-				System.out.println("switced to :"+ b[bCurrent].getClass().getName());
-			}
-			//Make sure doing behavior with more acts if possible
-			if(bActs[bCurrent] == 0)
-			{
-				int totalRemaining = 0;
-				for(int i : bActs)
-					totalRemaining+=i;
-				if(totalRemaining>0){
-					do{
-						bCurrent = (int) (Math.random()*b.length);
-					}while (bActs[bCurrent]<=0);
+		while (b == null && somethingCanStillAct()) {
+			bCurrent = (int) (Math.random() * behaviors.length);
+			if (canStillAct[bCurrent])
+				try {
+					b = (Behavior) behaviors[bCurrent].newInstance();
+				} catch (InstantiationException | IllegalAccessException e) {
+					System.out.println("Behavior creation error");
 				}
-				b[bCurrent].prepare();
-			}
+
 		}
-		else{
+		if (!t.isRunning() || b == null) {
 			System.out.println("shutdown");
 			System.out.println("timeRemaining " + t.getRemaining());
-			System.out.println("actsRemaining" + b[bCurrent].getClass().getName()+ "  " +bActs[bCurrent]);
-			
 			shutdown();
-		}*/
+		} else if (b.canAct()) {
+			b.act();
+			if (Math.random() < .02f)// randomly switch occasionally
+				b = null;
+		} else {
+			canStillAct[bCurrent] = false;
+			b = null;
+		}
+
 		return 0;
 	}
 
