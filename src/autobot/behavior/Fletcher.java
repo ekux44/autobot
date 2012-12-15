@@ -13,7 +13,7 @@ public class Fletcher extends Behavior {
 	private boolean canAccomplish;
 	public int errorCount;
 
-	public final int unstrungBow=66, string=1777; //66 for unstrung yew shieldbow
+	public final int unstrungBow=62, string=1777; //66 for unstrung yew shieldbow // 64 for maple shortbow // 62 for maple shieldbow
 
 	@Override
 	/** this assumes near bank, knife in toolbar **/
