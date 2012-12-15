@@ -1,29 +1,28 @@
 
 import org.powerbot.core.script.ActiveScript;
 import org.powerbot.game.api.Manifest;
+import org.powerbot.game.api.util.Timer;
 
 import autobot.behavior.*;
 
 @Manifest(authors = { "ekux" }, name = "SuperHeatBot")
 public class AlchBot extends ActiveScript {
 
-	Behavior b = new AlchNotedInventory();
-
-	@Override
-	public void onStart() {
-		b.prepare();
-	}
-
+	Behavior b;
+	int maxTimeInMinutes = 240;
+	Timer t = new Timer(60L*1000L*maxTimeInMinutes);
+	
 	@Override
 	public int loop() {
-		if (b.canAct())
+		if(b == null)
+			b = new AlchNotedInventory();
+		if (t.isRunning() && b.canAct())
 			b.act();
-		else
+		else{
+			System.out.println("shutdown");
+			System.out.println("timeRemaining " + t.getRemaining());
 			shutdown();
+		}
 		return 0;
-	}
-
-	@Override
-	public void onStop() {
 	}
 }
