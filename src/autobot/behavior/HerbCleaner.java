@@ -1,6 +1,5 @@
 package autobot.behavior;
 
-import org.powerbot.game.api.methods.input.Keyboard;
 import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.methods.widget.Bank;
@@ -9,19 +8,16 @@ import org.powerbot.game.api.util.Time;
 
 import autobot.behavior.Behavior.Times;
 
-/**  **/
-public class Fletcher extends Behavior {
+/** Behavior that cleans herbs @author Eric Kuxhausen **/
+public class HerbCleaner  extends Behavior {
 
 	private boolean canAccomplish;
 	public int errorCount;
 
-	public final int unstrungBow = 62, string = 1777; // 66 for unstrung yew
-														// shieldbow // 64 for
-														// maple shortbow // 62
-														// for maple shieldbow
+	public final int grimyHerb = 211; // 211 for avantoe
 
-	/** this assumes near bank, knife in toolbar **/
-	public Fletcher() {
+	/** this assumes near bank **/
+	public HerbCleaner() {
 		try {
 			Bank.depositInventory();
 			canAccomplish = true;
@@ -49,26 +45,23 @@ public class Fletcher extends Behavior {
 	}
 
 	private void string() throws Exception {
-		System.out.println("attempting to string");
 		Inventory.getItemAt(0).getWidgetChild().click(true);
-		sleep(Times.NORMAL);
-		Inventory.getItemAt(15).getWidgetChild().click(true);
 		sleep(Times.NORMAL);
 		Mouse.click(390 + Random.nextInt(5, 20), 360 + Random.nextInt(0, 15),
 				true);
-		System.out.println("Started stringing");
+		System.out.println("Started Cleaning");
 		Time.sleep(Random.nextInt(14000, 15000));
-
-		for (int i = 0; i < 5; i++) {
-			if (!Inventory.contains(unstrungBow)) {
-				i = 10;
-			} else {
-				i++;
-				Time.sleep(3000);
-				System.out.println("Waiting to finish stringing...");
+		
+		int wait = 0;
+		while (Inventory.contains(grimyHerb)){
+			Time.sleep(3000);
+			wait++;
+			if(wait>5){
+				//something went wrong
+				throw new Exception();
 			}
-			System.out.println("Finished Stringing");
 		}
+		System.out.println("Finished Cleaning");
 	}
 
 	private void bank() throws Exception {
@@ -79,12 +72,10 @@ public class Fletcher extends Behavior {
 			Bank.open();
 		}
 		sleep(Times.SHORT);
-		Bank.depositInventory(); /* deposit strung bows */
-		System.out.println("deposited inventory");
-		Bank.withdraw(unstrungBow, 14); /* withdraw unstrung bows */
-		System.out.println("withdrew bows");
-		Bank.withdraw(string, 14); /* withdraw string */
-		System.out.println("withdrew strings");
+		Bank.depositInventory();
+		sleep(Times.SHORT);
+		Bank.withdraw(grimyHerb, 28); 
+		sleep(Times.SHORT);
 		Bank.close(); /* close */
 		System.out.println("closing bank");
 		sleep(Times.BANK);
