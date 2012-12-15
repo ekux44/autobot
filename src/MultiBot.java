@@ -5,10 +5,10 @@ import org.powerbot.game.api.util.Timer;
 
 import autobot.behavior.*;
 
-@Manifest(authors = { "ekux" }, name = "SuperHeatBot")
+@Manifest(authors = { "ekux" }, name = "MultiBot")
 public class MultiBot extends ActiveScript {
 
-	Behavior[] b = {new Fletcher(), new Superheater()};
+	//Behavior[] b = {new Fletcher(), new Superheater()};
 	int[] bActs = {100/14, 150/5};
 	int bCurrent = 0;
 	
@@ -20,13 +20,13 @@ public class MultiBot extends ActiveScript {
 	
 	@Override
 	public void onStart() {
-		b[bCurrent].prepare();
+	//	b[bCurrent].prepare();
 		
 	}
 
 	@Override
 	public int loop() {
-		if (t.isRunning()&&bActs[bCurrent]>0 && b[bCurrent].canAct()){
+	/*	if (t.isRunning()&&bActs[bCurrent]>0 && b[bCurrent].canAct()){
 			b[bCurrent].act();
 			bActs[bCurrent]--;
 			
@@ -57,11 +57,8 @@ public class MultiBot extends ActiveScript {
 			System.out.println("actsRemaining" + b[bCurrent].getClass().getName()+ "  " +bActs[bCurrent]);
 			
 			shutdown();
-		}
+		}*/
 		return 0;
 	}
 
-	@Override
-	public void onStop() {
-	}
 }

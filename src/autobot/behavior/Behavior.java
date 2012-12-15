@@ -5,9 +5,6 @@ import org.powerbot.game.api.util.Random;
 /** @author Eric Kuxhausen **/
 public abstract class Behavior {
 
-	/** prepare should be called before calling canAct() or act() **/
-	public abstract void prepare();
-
 	public abstract boolean canAct();
 
 	/** Discrete unit of work. canAct() should be checked before any calls to act are made */

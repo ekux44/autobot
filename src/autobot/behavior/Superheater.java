@@ -1,9 +1,12 @@
 package autobot.behavior;
 
 import org.powerbot.game.api.methods.input.Keyboard;
+import org.powerbot.game.api.methods.tab.Equipment;
+import org.powerbot.game.api.methods.tab.Equipment.Slot;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.methods.widget.Bank;
 import org.powerbot.game.api.util.Time;
+import org.powerbot.game.api.wrappers.node.Item;
 
 /** Sample Behavior that heats mith@author Eric Kuxhausen **/
 public class Superheater extends Behavior {
@@ -11,17 +14,37 @@ public class Superheater extends Behavior {
 	private boolean canAccomplish;
 	public int errorCount;
 
-	public final int mithrilOre = 447, mithBar = 2359, coalOre = 453,
-			natureRunes = 561;
+	public static final int mithrilOre = 447, mithBar = 2359, coalOre = 453,
+			natureRunes = 561, fireBattleStaff = 1393, staffOfFire = 1387;
 
-	@Override
 	/** this assumes near bank, fire staff equipped, inventory tab open, 
 	 * and superheat bound to 1 on the open action bar **/
-	public void prepare() {
+	public Superheater(){
 		// TODO reduce assumptions
 		try {
+			Bank.open();
+			sleep(Times.SHORT);
 			Bank.depositInventory();
+			sleep(Times.SHORT);
+			Bank.depositEquipment();
+			sleep(Times.SHORT);
+			if(!Bank.withdraw(staffOfFire, 1)){
+				System.out.println("withdraw failed");
+				canAccomplish = false; 
+								
+				sleep(Times.SHORT);
+				Bank.close();
+				sleep(Times.BANK);
+				
+				return;
+			}
+			sleep(Times.SHORT);
+			Bank.close();
+			sleep(Times.BANK);
+			
+			Inventory.getItem(staffOfFire).getWidgetChild().click(true);
 			canAccomplish = true;
+			System.out.println("Prepare Completed");
 
 		} catch (Exception e) {
 			canAccomplish = false;

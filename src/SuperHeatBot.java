@@ -8,17 +8,14 @@ import autobot.behavior.*;
 @Manifest(authors = { "ekux" }, name = "SuperHeatBot")
 public class SuperHeatBot extends ActiveScript {
 
-	Behavior b = new Superheater();
+	Behavior b;
 	int maxTimeInMinutes = 240;
 	Timer t = new Timer(60L*1000L*maxTimeInMinutes);
 	
 	@Override
-	public void onStart() {
-		b.prepare();
-	}
-
-	@Override
 	public int loop() {
+		if(b == null)
+			b = new Superheater();
 		if (t.isRunning() && b.canAct())
 			b.act();
 		else{
@@ -27,9 +24,5 @@ public class SuperHeatBot extends ActiveScript {
 			shutdown();
 		}
 		return 0;
-	}
-
-	@Override
-	public void onStop() {
 	}
 }

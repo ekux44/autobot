@@ -15,18 +15,18 @@ public class Fletcher extends Behavior {
 
 	public final int unstrungBow=62, string=1777; //66 for unstrung yew shieldbow // 64 for maple shortbow // 62 for maple shieldbow
 
-	@Override
 	/** this assumes near bank, knife in toolbar **/
-	public void prepare() {
+	public Fletcher(){
 		// TODO reduce assumptions
-		try {
-			Bank.depositInventory();
-			canAccomplish = true;
+				try {
+					Bank.depositInventory();
+					canAccomplish = true;
 
-		} catch (Exception e) {
-			canAccomplish = false;
-		}
+				} catch (Exception e) {
+					canAccomplish = false;
+				}
 	}
+	
 
 	@Override
 	public boolean canAct() {

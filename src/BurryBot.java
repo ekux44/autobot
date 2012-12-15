@@ -7,17 +7,14 @@ import autobot.behavior.*;
 @Manifest(authors = { "ekux" }, name = "BurryBot")
 public class BurryBot extends ActiveScript {
 
-	Behavior b = new Burrier();
+	Behavior b;
 	int maxTimeInMinutes = 240;
 	Timer t = new Timer(60L*1000L*maxTimeInMinutes);
 	
 	@Override
-	public void onStart() {
-		b.prepare();
-	}
-
-	@Override
 	public int loop() {
+		if(b==null)
+			b = new Burrier();
 		if (t.isRunning() && b.canAct())
 			b.act();
 		else{
@@ -26,9 +23,5 @@ public class BurryBot extends ActiveScript {
 			shutdown();
 		}
 		return 0;
-	}
-
-	@Override
-	public void onStop() {
 	}
 }

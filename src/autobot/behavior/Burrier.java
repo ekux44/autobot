@@ -17,16 +17,15 @@ public class Burrier extends Behavior {
 	 * Assumes key 9 bound to burry babyDragonBones and key 0 bound to burry
 	 * bigBones. Inventory tab open
 	 **/
-	@Override
-	public void prepare() {
+	public Burrier(){
 		// TODO reduce assumptions
-		try {
-			Bank.depositInventory();
-			canAccomplish = true;
+				try {
+					Bank.depositInventory();
+					canAccomplish = true;
 
-		} catch (Exception e) {
-			canAccomplish = false;
-		}
+				} catch (Exception e) {
+					canAccomplish = false;
+				}
 	}
 
 	@Override

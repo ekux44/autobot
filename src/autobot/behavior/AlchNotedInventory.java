@@ -14,12 +14,9 @@ public class AlchNotedInventory extends Behavior {
 	
 	public final int natureRunes = 561;
 
-	
-	@Override
 	/** this assumes near bank, fire staff equipped, inventory tab open, 
 	 * and highalch bound to 2 on the open action bar **/
-	public void prepare() {
-		// TODO Auto-generated method stub
+	public AlchNotedInventory(){
 		canAccomplish = true;
 	}
 

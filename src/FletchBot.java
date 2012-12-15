@@ -5,20 +5,17 @@ import org.powerbot.game.api.util.Timer;
 
 import autobot.behavior.*;
 
-@Manifest(authors = { "ekux" }, name = "SuperHeatBot")
+@Manifest(authors = { "ekux" }, name = "FletchBot")
 public class FletchBot extends ActiveScript {
 
-	Behavior b = new Fletcher();
+	Behavior b;
 	int maxTimeInMinutes = 240;
 	Timer t = new Timer(60L*1000L*maxTimeInMinutes);
 	
 	@Override
-	public void onStart() {
-		b.prepare();
-	}
-
-	@Override
 	public int loop() {
+		if(b == null)
+			b = new Fletcher();
 		if (t.isRunning() && b.canAct())
 			b.act();
 		else{
@@ -27,9 +24,5 @@ public class FletchBot extends ActiveScript {
 			shutdown();
 		}
 		return 0;
-	}
-
-	@Override
-	public void onStop() {
 	}
 }
