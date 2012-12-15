@@ -1,6 +1,7 @@
 
 import org.powerbot.core.script.ActiveScript;
 import org.powerbot.game.api.Manifest;
+import org.powerbot.game.api.util.Timer;
 
 import autobot.behavior.*;
 
@@ -8,7 +9,9 @@ import autobot.behavior.*;
 public class SuperHeatBot extends ActiveScript {
 
 	Behavior b = new Superheater();
-
+	int maxTimeInMinutes = 240;
+	Timer t = new Timer(60L*1000L*maxTimeInMinutes);
+	
 	@Override
 	public void onStart() {
 		b.prepare();
@@ -16,10 +19,13 @@ public class SuperHeatBot extends ActiveScript {
 
 	@Override
 	public int loop() {
-		if (b.canAct())
+		if (t.isRunning() && b.canAct())
 			b.act();
-		else
+		else{
+			System.out.println("shutdown");
+			System.out.println("timeRemaining " + t.getRemaining());
 			shutdown();
+		}
 		return 0;
 	}
 

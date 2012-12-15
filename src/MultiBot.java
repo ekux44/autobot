@@ -13,7 +13,7 @@ public class MultiBot extends ActiveScript {
 	int bCurrent = 0;
 	
 	
-	int maxTimeInMinutes = 12;
+	int maxTimeInMinutes = 240;
 	Timer t = new Timer(60L*1000L*maxTimeInMinutes);
 	
 	
@@ -52,11 +52,11 @@ public class MultiBot extends ActiveScript {
 			}
 		}
 		else{
-			shutdown();
-			
 			System.out.println("shutdown");
 			System.out.println("timeRemaining " + t.getRemaining());
 			System.out.println("actsRemaining" + b[bCurrent].getClass().getName()+ "  " +bActs[bCurrent]);
+			
+			shutdown();
 		}
 		return 0;
 	}
