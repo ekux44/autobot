@@ -12,8 +12,8 @@ import autobot.behavior.*;
 public class MultiBot extends ActiveScript {
 
 	Behavior b;
-	Class<?>[] behaviors = { Superheater.class, Fletcher.class };
-	boolean[] canStillAct = { true, true };
+	Class<?>[] behaviors = { Superheater.class, Fletcher.class , HerbCleaner.class};
+	boolean[] canStillAct = { true, true, true};
 	int bCurrent = 0;
 
 	int maxTimeInMinutes = 240;
