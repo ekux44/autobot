@@ -15,10 +15,9 @@ public class Superheater extends Behavior {
 	public int errorCount;
 
 	public static final int mithrilOre = 447, mithBar = 2359, coalOre = 453,
-			natureRunes = 561, fireBattleStaff = 1393, staffOfFire = 1387;
+			natureRunes = 561, staffOfFire = 1387;
 
-	/** this assumes near bank, fire staff equipped, inventory tab open, 
-	 * and superheat bound to 1 on the open action bar **/
+	/** this assumes near bank, and superheat bound to 1 on the open action bar **/
 	public Superheater(){
 		// TODO reduce assumptions
 		try {
@@ -106,11 +105,14 @@ public class Superheater extends Behavior {
 		sleep(Times.SHORT);
 		Bank.depositInventory();
 		sleep(Times.SHORT);
-		Bank.withdraw(natureRunes, 5);
+		if(!Bank.withdraw(natureRunes, 5));
+			errorCount++;
 		sleep(Times.SHORT);
-		Bank.withdraw(coalOre, 20);
+		if(!Bank.withdraw(coalOre, 20));
+			errorCount++;
 		sleep(Times.SHORT);
-		Bank.withdraw(mithrilOre, 5);
+		if(!Bank.withdraw(mithrilOre, 5));
+			errorCount++;
 		sleep(Times.SHORT);
 		Bank.close();
 		sleep(Times.BANK);
