@@ -44,7 +44,7 @@ public class MultiBot extends ActiveScript {
 			shutdown();
 		} else if (b.canAct()) {
 			b.act();
-			if (Math.random() < .02f)// randomly switch occasionally
+			if (Math.random() < .04f)// randomly switch occasionally
 				b = null;
 		} else {
 			canStillAct[bCurrent] = false;
