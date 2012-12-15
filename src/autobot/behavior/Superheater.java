@@ -105,14 +105,11 @@ public class Superheater extends Behavior {
 		sleep(Times.SHORT);
 		Bank.depositInventory();
 		sleep(Times.SHORT);
-		if(!Bank.withdraw(natureRunes, 5));
-			errorCount++;
+		Bank.withdraw(natureRunes, 5);
 		sleep(Times.SHORT);
-		if(!Bank.withdraw(coalOre, 20));
-			errorCount++;
+		Bank.withdraw(coalOre, 20);
 		sleep(Times.SHORT);
-		if(!Bank.withdraw(mithrilOre, 5));
-			errorCount++;
+		Bank.withdraw(mithrilOre, 5);
 		sleep(Times.SHORT);
 		Bank.close();
 		sleep(Times.BANK);
