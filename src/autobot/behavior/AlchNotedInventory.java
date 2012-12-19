@@ -39,6 +39,8 @@ public class AlchNotedInventory extends Behavior {
 	}
 	public void alchEverythingButNatureOnce(){
 		Item[] items = Inventory.getItems();
+		if(items.length<=1)
+			errorCount++;
 		for(Item i : items){
 			if(i.getId()!=natureRunes){
 				Keyboard.sendKey((char) '2', getTime(Times.KEYPRESS));
