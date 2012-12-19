@@ -8,7 +8,7 @@ import autobot.behavior.*;
 public class BurryBot extends ActiveScript {
 
 	Behavior b;
-	int maxTimeInMinutes = 240;
+	int maxTimeInMinutes = 290+(int)(10*Math.random()); // up to 5 hours
 	Timer t = new Timer(60L*1000L*maxTimeInMinutes);
 	
 	@Override

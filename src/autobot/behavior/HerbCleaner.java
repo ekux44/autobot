@@ -14,7 +14,9 @@ public class HerbCleaner  extends Behavior {
 	private boolean canAccomplish;
 	public int errorCount;
 
-	public final int grimyHerb = 211; // 211 for avantoe
+	public final int grimyHerb = 2485; 
+	// 211 for grimy avantoe
+	// 2485 for grimy lantadyme
 
 	/** this assumes near bank **/
 	public HerbCleaner() {
@@ -54,9 +56,9 @@ public class HerbCleaner  extends Behavior {
 		
 		int wait = 0;
 		while (Inventory.contains(grimyHerb)){
-			Time.sleep(3000);
+			Time.sleep(1000);
 			wait++;
-			if(wait>5){
+			if(wait>15){
 				//something went wrong
 				throw new Exception();
 			}
@@ -79,5 +81,9 @@ public class HerbCleaner  extends Behavior {
 		Bank.close(); /* close */
 		System.out.println("closing bank");
 		sleep(Times.BANK);
+	}
+	
+	public void asdf (Comparable c){
+		
 	}
 }

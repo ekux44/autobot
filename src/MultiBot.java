@@ -16,7 +16,7 @@ public class MultiBot extends ActiveScript {
 	boolean[] canStillAct = { true, true, true};
 	int bCurrent = 0;
 
-	int maxTimeInMinutes = 240;
+	int maxTimeInMinutes = 290+(int)(10*Math.random()); // up to 5 hours
 	Timer t = new Timer(60L * 1000L * maxTimeInMinutes);
 
 	public boolean somethingCanStillAct() {
@@ -44,7 +44,7 @@ public class MultiBot extends ActiveScript {
 			shutdown();
 		} else if (b.canAct()) {
 			b.act();
-			if (Math.random() < .2f)// randomly switch occasionally
+			if (Math.random() < .1f)// randomly switch occasionally // currently euq
 				b = null;
 		} else {
 			canStillAct[bCurrent] = false;
