@@ -7,19 +7,24 @@ import org.powerbot.game.api.util.Timer;
 import autobot.behavior.*;
 
 @Manifest(authors = { "ekux" }, name = "PartialAlchAndTradeBot")
-public class AlchAndTradeBot extends ActiveScript {
+public class ExperimentalBot extends ActiveScript {
 	
-	//TODO implement
+	Behavior b;
+	int maxTimeInMinutes = 290+(int)(10*Math.random()); // up to 5 hours
+	Timer t = new Timer(60L*1000L*maxTimeInMinutes);
 	
 	@Override
 	public int loop() {
+		interactWithGrandExchange();
+		return 0;
+	}
+	
+	public void interactWithGrandExchange(){
 		InGameGE.open();
 		if(InGameGE.buy("nature rune", 0, 100)){
 			InGameGE.close();
 			shutdown();
 		}
 		shutdown();
-		
-		return 0;
 	}
 }
