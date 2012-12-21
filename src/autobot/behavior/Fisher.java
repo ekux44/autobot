@@ -4,9 +4,12 @@ import org.powerbot.core.script.job.Task;
 import org.powerbot.game.api.methods.Walking;
 import org.powerbot.game.api.methods.input.Keyboard;
 import org.powerbot.game.api.methods.interactive.NPCs;
+import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.node.SceneEntities;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.methods.widget.Bank;
+import org.powerbot.game.api.methods.widget.Camera;
+import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.wrappers.Locatable;
 import org.powerbot.game.api.wrappers.Tile;
 import org.powerbot.game.api.wrappers.map.TilePath;
@@ -60,9 +63,25 @@ public class Fisher extends Behavior {
 	}
 
 	private void fish() throws Exception {
+		Walking.walk(NPCs.getNearest(320).getLocation());
+		setCameraRelativeTo(NPCs.getNearest(320).getLocation());
 		NPCs.getNearest(320).click(true);
 		Task.sleep(10000,10500);
 	}
+	
+	public void setCameraRelativeTo(final Locatable reference) {
+        final Tile playerTile = Players.getLocal().getLocation();
+        final Tile referenceTile = reference.getLocation();
+        if (playerTile.getX() < referenceTile.getX()) {
+            Camera.setAngle(Random.nextInt(250, 270));
+        } else if (playerTile.getX() > referenceTile.getX()) {
+            Camera.setAngle(Random.nextInt(80, 100));
+        } else if (playerTile.getY() > referenceTile.getY()) {
+            Camera.setAngle(Random.nextInt(170, 180));
+        } else if (playerTile.getY() < referenceTile.getY()) {
+            Camera.setAngle(Random.nextInt(350, 360));
+        }
+}
 
 	private void moveToBank() throws Exception{
 		while(tp.validate()){
