@@ -15,7 +15,10 @@ public class ExperimentalBot extends ActiveScript {
 	
 	@Override
 	public int loop() {
-		interactWithGrandExchange();
+		//interactWithGrandExchange();
+		b = new ToGrandExchange();
+		b.act();
+		
 		return 0;
 	}
 	
