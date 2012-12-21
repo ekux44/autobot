@@ -17,7 +17,8 @@ public class HerbCleaner  extends Behavior {
 	public final int grimyHerb = 2485; 
 	// 211 for grimy avantoe
 	// 2485 for grimy lantadyme
-
+	// 217 for grimy dwarf weed
+	
 	/** this assumes near bank **/
 	public HerbCleaner() {
 		try {
