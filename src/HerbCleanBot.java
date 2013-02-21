@@ -5,7 +5,7 @@ import org.powerbot.game.api.util.Timer;
 import autobot.behavior.Behavior;
 import autobot.behavior.HerbCleaner;
 
-@Manifest(authors = { "ekux" }, name = "HerbCleanBot")
+@Manifest(authors = { "ekux" }, name = "HerbCleanBot", description = "")
 public class HerbCleanBot extends ActiveScript {
 
 	Behavior b;

@@ -5,7 +5,7 @@ import org.powerbot.game.api.util.Timer;
 import autobot.behavior.Behavior;
 import autobot.behavior.Fisher;
 
-@Manifest(authors = { "ekux" }, name = "FishingBot")
+@Manifest(authors = { "ekux" }, name = "FishingBot", description = "")
 public class FishingBot extends ActiveScript {
 
 	Behavior b;

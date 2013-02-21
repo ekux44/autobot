@@ -5,7 +5,7 @@ import org.powerbot.game.api.util.Timer;
 
 import autobot.behavior.*;
 
-@Manifest(authors = { "ekux" }, name = "SuperHeatBot")
+@Manifest(authors = { "ekux" }, name = "SuperHeatBot", description = "")
 public class SuperHeatBot extends ActiveScript {
 
 	Behavior b;

@@ -4,7 +4,7 @@ import org.powerbot.game.api.util.Timer;
 
 import autobot.behavior.*;
 
-@Manifest(authors = { "ekux" }, name = "BurryBot")
+@Manifest(authors = { "ekux" }, name = "BurryBot", description = "")
 public class BurryBot extends ActiveScript {
 
 	Behavior b;

@@ -25,7 +25,7 @@ public class ToGrandExchange extends Behavior {
 	// public static final int;
 	private TilePath tp1;
 
-	/** this assumes Varrock Loadstone Teleport Active and bound to "=" **/
+	/** this assumes Varrock Loadstone Teleport Active and bound to "8" **/
 	public ToGrandExchange() {
 		// TODO assumes at fishing spot
 		try {
@@ -67,11 +67,15 @@ public class ToGrandExchange extends Behavior {
 	}
 
 	private void teleport() throws Exception {
-		Keyboard.sendKey((char) '=', getTime(Times.KEYPRESS));
+		Keyboard.sendKey((char) '8', getTime(Times.KEYPRESS));
 		sleep(Times.KEYPRESS);
 		sleep(Times.VERYSHORT);
 
 		Mouse.click(Random.nextInt(360, 380), Random.nextInt(215, 245), true);
+		sleep(Times.NORMAL);
+		sleep(Times.NORMAL);
+		sleep(Times.NORMAL);
+		sleep(Times.NORMAL);
 		sleep(Times.NORMAL);
 		sleep(Times.NORMAL);
 		sleep(Times.NORMAL);

@@ -5,7 +5,7 @@ import org.powerbot.game.api.util.Timer;
 
 import autobot.behavior.*;
 
-@Manifest(authors = { "ekux" }, name = "FletchBot")
+@Manifest(authors = { "ekux" }, name = "FletchBot", description = "")
 public class FletchBot extends ActiveScript {
 
 	Behavior b;

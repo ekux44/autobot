@@ -8,7 +8,7 @@ import autobot.behavior.*;
  * Randomly runs behaviors listed below. Will switch occasionally switch
  * behaviors and will stop trying a behavior if it is unsuccessful
  **/
-@Manifest(authors = { "ekux" }, name = "MultiBot")
+@Manifest(authors = { "ekux" }, name = "MultiBot", description = "")
 public class MultiBot extends ActiveScript {
 
 	Behavior b;

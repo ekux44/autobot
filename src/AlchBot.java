@@ -5,7 +5,7 @@ import org.powerbot.game.api.util.Timer;
 
 import autobot.behavior.*;
 
-@Manifest(authors = { "ekux" }, name = "AlchBot")
+@Manifest(authors = { "ekux" }, name = "AlchBot", description = "")
 public class AlchBot extends ActiveScript {
 
 	Behavior b;
